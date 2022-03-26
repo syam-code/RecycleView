@@ -74,7 +74,7 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
         holder.linearLayoutItem.setOnClickListener(view -> {
             Toast.makeText(context, dataItem.get(position).getTitle(), Toast.LENGTH_SHORT).show();
 
-            //  tahap 3 - menambahkan kondisi if, untuk menampilkan ke activity lain
+            //  tahap 3.1 - menambahkan kondisi if, untuk menampilkan ke activity lain, sama activity
             if (dataItem.get(position).getTitle().equals("Facebook")){
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("GAMBAR_DEFAULT", R.drawable.facebook);
@@ -93,12 +93,25 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
                 intent.putExtra("TEXT_DEFAULT", "Twitter Activity");
                 context.startActivity(intent);
             }
+            //  tahap 3.2 - menambahkan kondisi if, untuk menampilkan activity yang berdeda
+//            if (dataItem.get(position).getTitle().equals("Github")){
+//                context.startActivity(new Intent(context, GithubActivity.class));
+//            }
+//            if (dataItem.get(position).getTitle().equals("Facebook")){
+//                context.startActivity(new Intent(context, DetailActivity.class));
+//            }
         });
     }
 
     @Override
     public int getItemCount() {
         return dataItem.size();
+    }
+
+    void setFilter(ArrayList<ItemModel> filterModel){
+        dataItem = new ArrayList<>();
+        dataItem.addAll(filterModel);
+        notifyDataSetChanged();
     }
 
 }
