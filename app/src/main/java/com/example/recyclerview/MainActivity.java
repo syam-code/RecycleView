@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
             ));
         }
 
-        recyclerViewAdapter = new AdapterRecyclerView(data);
+//  tahap 1 "recyclerViewAdapter = new AdapterRecyclerView(data);"
+//  tahap 2 - tambahkan this
+        recyclerViewAdapter = new AdapterRecyclerView(this, data);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 }
