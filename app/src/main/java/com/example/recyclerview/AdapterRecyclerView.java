@@ -2,6 +2,7 @@ package com.example.recyclerview;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +73,27 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
 //  tahap 2
         holder.linearLayoutItem.setOnClickListener(view -> {
             Toast.makeText(context, dataItem.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-        });
 
+            //  tahap 3 - menambahkan kondisi if, untuk menampilkan ke activity lain
+            if (dataItem.get(position).getTitle().equals("Facebook")){
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("GAMBAR_DEFAULT", R.drawable.facebook);
+                intent.putExtra("TEXT_DEFAULT", "Facebook Activity");
+                context.startActivity(intent);
+            }
+            if (dataItem.get(position).getTitle().equals("Instagram")){
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("GAMBAR_DEFAULT", R.drawable.instagram);
+                intent.putExtra("TEXT_DEFAULT", "Instagram Activity");
+                context.startActivity(intent);
+            }
+            if (dataItem.get(position).getTitle().equals("Twitter")){
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("GAMBAR_DEFAULT", R.drawable.twitter);
+                intent.putExtra("TEXT_DEFAULT", "Twitter Activity");
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
